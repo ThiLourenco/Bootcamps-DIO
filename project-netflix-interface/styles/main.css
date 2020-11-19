@@ -1,6 +1,7 @@
 :root {
   --red:#e50914;
   --black: #141414;
+  --dark-black: #000000;
 
 }
 
@@ -73,7 +74,7 @@ header nav a:hover {
 .btn {
   background-color: rgba(0,0,0,0.50);
   border: none;
-  color: #fff;
+  color: #ffff;
 
   font-family: 'Roboto Condensed', sans-serif;
 
@@ -87,7 +88,7 @@ header nav a:hover {
 
 .btn:hover {
   background-color: #ffff;
-  color:#000000;
+  color:var(--dark-black);
 }
 .svg-inline--fa {
   margin-right: 7px;
@@ -113,4 +114,116 @@ header nav a:hover {
 
 .carousel-movies {
   margin-top: 12px;
+}
+
+/* trailer movie */
+
+.trailer{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  background: rgba(0,0,0,0.95);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.trailer.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.trailer iframe {
+  position: relative;
+  max-width: 900px;
+  outline: none;
+}
+
+.trailer .close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 40px;
+  cursor: pointer;
+  filter: invert(1);
+  max-width: 32px;
+}
+
+@media (max-width: 991px) {
+  .trailer iframe {
+    max-width: 90%;
+  }
+}
+
+/* modal information */
+
+.popup .overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.82);
+  z-index: 3;
+  display: none;
+}
+
+.popup .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  color:var(--dark-black);
+  width: 470px;
+  height: 300px;
+  z-index:3;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+.content p {
+  margin-top: 20px;
+}
+
+.content a {
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: var(--red);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.content a:hover {
+  color: var(--dark-black);
+  text-decoration: line;
+}
+
+.popup .close-btn {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+
+}
+
+.popup.active .overlay {
+  display:block;
+}
+
+.popup.active .content {
+  visibility: visible;
+  opacity: 1;
 }
